@@ -3,7 +3,7 @@
 package simapp
 
 import (
-	"github.com/cosmos/cosmos-sdk/simsx"
+	"github.com/cosmos/cosmos-sdk/simsx/runner/v1"
 	"testing"
 
 	simcli "github.com/cosmos/cosmos-sdk/x/simulation/client/cli"
@@ -15,7 +15,7 @@ func BenchmarkFullAppSimulation(b *testing.B) {
 	b.ReportAllocs()
 
 	config := simcli.NewConfigFromFlags()
-	config.ChainID = simsx.SimAppChainID
+	config.ChainID = v1.SimAppChainID
 
-	simsx.RunWithSeed(b, config, NewSimApp, setupStateFactory, 1, nil)
+	v1.RunWithSeed(b, config, NewSimApp, setupStateFactory, 1, nil)
 }
